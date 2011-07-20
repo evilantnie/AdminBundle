@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Sonata\AdminBundle\Filter\ORM;
+namespace Sonata\AdminBundle\Filter\ODM;
 
 use Symfony\Component\Form\FormFactory;
 
@@ -17,12 +17,16 @@ class ChoiceFilter extends Filter
 {
     public function filter($queryBuilder, $alias, $field, $value)
     {
+        if (!is_array($value)) {
+            return;
+        }
+
         if ($this->getField()->getAttribute('multiple')) {
-            if (!is_array($value) || count($value) == 0) {
+            if (in_array('all', $value)) {
                 return;
             }
 
-            if (in_array('all', $value)) {
+            if (count($value) == 0) {
                 return;
             }
 
@@ -30,9 +34,10 @@ class ChoiceFilter extends Filter
                 $alias,
                 $field
             ), $value));
+
         } else {
 
-            if (empty($value) || $value == 'all') {
+            if ($value === null || $value == 'all') {
                 return;
             }
 

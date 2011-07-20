@@ -28,8 +28,8 @@ interface ListBuilderInterface
 
     /**
      * @abstract
-     * @param \Sonata\AdminBundle\Admin\FieldDescriptionCollection $list
-     * @param \Sonata\AdminBundle\Admin\FieldDescription $fieldDescription
+     * @param \Sonata\AdminBundle\Datagrid\ListCollection $list
+     * @param \Sonata\AdminBundle\Admin\FieldDescriptionInterface $fieldDescription
      * @return void
      */
     function addField(FieldDescriptionCollection $list, FieldDescriptionInterface $fieldDescription);
@@ -37,7 +37,7 @@ interface ListBuilderInterface
     /**
      * @abstract
      * @param \Sonata\AdminBundle\Admin\AdminInterface $admin
-     * @param \Sonata\AdminBundle\Admin\FieldDescription $fieldDescription
+     * @param \Sonata\AdminBundle\Admin\FieldDescriptionInterface $fieldDescription
      * @param array $options
      * @return void
      */
